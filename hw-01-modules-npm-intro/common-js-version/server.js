@@ -3,15 +3,19 @@ const { User } = require('./reader')
 const { createServer } = require('node:http')
 const data = require('./data.json')
 
-const server = createServer((req, res) => {
-	const role = req.url.split('/').at(-1)
+const user = new User(data)
 
-	const user = new User(data)
-	const userName = user.show(role)
-	const answer = `Simple copy text
+function buildAnswer(userName) {
+	return `CommonJS Version
 director | manager | driver
 
 User is ${userName}`
+}
+
+const server = createServer((req, res) => {
+	const role = req.url.split('/').at(-1)
+	const userName = user.show(role)
+	const answer = buildAnswer(userName)
 
 	res.writeHead(200, { 'Content-Type': 'text/plain' })
 	res.end(answer)
