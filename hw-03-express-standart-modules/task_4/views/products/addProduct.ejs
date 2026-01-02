@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link
+			rel="stylesheet"
+			href="/stylesheets/style.css" />
+	</head>
+	<body>
+		<h1><%= title %></h1>
+
+		<form>
+			<label>
+				Назва товару:
+
+				<input
+					autocomplete="off"
+					type="text"
+					name="title"
+					placeholder="Введіть назву товару"
+					class="input" />
+			</label>
+			<label>
+				Категорія товару:
+
+				<input
+					autocomplete="off"
+					type="text"
+					name="category"
+					placeholder="Введіть категорію товару"
+					class="input" />
+			</label>
+			<label>
+				Ціна товару:
+				<input
+					autocomplete="off"
+					type="number"
+					name="price"
+					placeholder="Введіть ціну товару"
+					class="input" />
+			</label>
+
+			<button type="submit">Надіслати</button>
+		</form>
+	</body>
+</html>
