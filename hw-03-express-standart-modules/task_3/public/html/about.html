@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>About</title>
+		<style>
+			:root {
+				--border: #222;
+				--text: #111;
+				--bg: #fff;
+			}
+
+			body {
+				margin: 24px;
+				font-family: Arial, Helvetica, sans-serif;
+				color: var(--text);
+				background: var(--bg);
+				line-height: 1.35;
+			}
+
+			.container {
+				max-width: 920px;
+			}
+
+			.title-line {
+				font-size: 18px;
+				margin: 0 0 14px;
+			}
+
+			.title-line b {
+				font-weight: 700;
+			}
+
+			.section {
+				margin-top: 10px;
+			}
+
+			.section-title {
+				font-size: 16px;
+				margin: 10px 0 6px;
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				table-layout: fixed;
+				font-size: 15px;
+			}
+
+			td {
+				border: 2px solid var(--border);
+				padding: 10px 12px;
+				vertical-align: middle;
+				word-wrap: break-word;
+			}
+
+			.col-narrow {
+				width: 28%;
+			}
+
+			.col-wide {
+				width: 72%;
+			}
+
+			/* Блок з великим правим текстом */
+			.big-cell td {
+				vertical-align: top;
+			}
+
+			.big-cell .right {
+				padding-top: 12px;
+			}
+
+			.list {
+				margin: 8px 0 0;
+				padding-left: 0;
+				list-style: none;
+			}
+
+			.list li {
+				margin: 4px 0;
+			}
+
+			.quote {
+				white-space: nowrap;
+			}
+
+			/* Трохи схоже на скрін: більші проміжки між групами */
+			.group-gap {
+				margin-top: 16px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<p class="title-line"><b>Задача 3.</b> Розробити програму з такими функціональними можливостями:</p>
+			<div class="section">
+				<div class="section-title">обробка статичних маршрутів:</div>
+				<table>
+					<tr>
+						<td class="col-narrow">“/”</td>
+						<td class="col-wide">Вітання користувача</td>
+					</tr>
+					<tr>
+						<td class="col-narrow">“/goals”</td>
+						<td class="col-wide">Ваші цілі</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="section group-gap">
+				<div class="section-title">обробка статичних файлів:</div>
+				<table>
+					<tr>
+						<td class="col-narrow">about</td>
+						<td class="col-wide">містить тему та умову задачі</td>
+					</tr>
+					<tr>
+						<td class="col-narrow">news</td>
+						<td class="col-wide">містить перелік важливі новини (для Вас)</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="section group-gap">
+				<div class="section-title">обробка параметрів запитів:</div>
+				<table class="big-cell">
+					<tr>
+						<td class="col-narrow">/info/:myLinks</td>
+						<td class="col-wide right">
+							у залежності від значення параметра повертає сторінку з :
+							<ul class="list">
+								<li><span class="quote">«sites»</span> - адресами улюблених сайтів</li>
+								<li><span class="quote">«films»</span> - адреси улюблених онлайн кінотеатрі</li>
+								<li><span class="quote">«me»</span> - або інформацію про себе</li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
