@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link
+			rel="stylesheet"
+			href="/stylesheets/style.css" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/images/favicon/apple-touch-icon.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/images/favicon/favicon-32x32.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/images/favicon/favicon-16x16.png" />
+		<link
+			rel="manifest"
+			href="/images/favicon/site.webmanifest" />
+	</head>
+	<body>
+		<%-include('../components/header.ejs', {activePage:'books'}) %>
+		<main>
+			<h1><span class="small-text">Назва книги:</span> <%= book.title %></h1>
+			<h2><span class="small-text">Автор книги:</span> <%= book.author %></h2>
+			<h3><span class="small-text">Рік випуску книги:</span> <%= book.year %> р.</h3>
+			<a
+				href="/books"
+				class="btn"
+				>До списку книг</a
+			>
+		</main>
+		<%-include('../components/footer.ejs') %>
+	</body>
+</html>

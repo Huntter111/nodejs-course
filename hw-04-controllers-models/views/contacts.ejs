@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link
+			rel="stylesheet"
+			href="/stylesheets/style.css" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="images/favicon/apple-touch-icon.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="images/favicon/favicon-32x32.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="images/favicon/favicon-16x16.png" />
+		<link
+			rel="manifest"
+			href="images/favicon/site.webmanifest" />
+	</head>
+	<body>
+		<%-include('./components/header.ejs', {activePage:'contacts'}) %>
+		<main>
+			<h1><%= title %></h1>
+
+			<p>
+				Цей проєкт створений у навчальних цілях. Якщо у вас є запитання або пропозиції, щодо покращення застосунку, буду
+				радий зворотному зв’язку.
+			</p>
+
+			<p>Ви можете звʼязатися зі мною через GitHub</p>
+
+			<p>Дякую за перегляд <strong>Book Manager App App</strong>!</p>
+		</main>
+
+		<%-include('./components/footer.ejs') %>
+	</body>
+</html>

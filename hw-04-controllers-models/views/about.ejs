@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link
+			rel="stylesheet"
+			href="/stylesheets/style.css" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="images/favicon/apple-touch-icon.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="images/favicon/favicon-32x32.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="images/favicon/favicon-16x16.png" />
+		<link
+			rel="manifest"
+			href="images/favicon/site.webmanifest" />
+	</head>
+	<body>
+		<%-include('./components/header.ejs', {activePage:'about'}) %>
+		<main>
+			<h1><%= title %></h1>
+			<h2>
+				Загальна кількість книг в Book Manager App:
+				<strong><%= totalBooks %></strong> шт.
+			</h2>
+			<% if (oldestBook) { %>
+			<h2>
+				Найстаріша книга в бібліотеці:
+				<strong> "<%= oldestBook.title %>" (<%= oldestBook.year %>) </strong>
+			</h2>
+			<% } else { %>
+			<p>Бібліотека поки що порожня.</p>
+			<% } %>
+			<p>
+				<strong>Book Manager App</strong> — навчальний вебзастосунок, створений для практики роботи з Node.js, Express
+				та архітектурою MVC.
+			</p>
+
+			<p>
+				Проєкт дозволяє керувати бібліотекою книг: додавати нові видання, редагувати інформацію про автора та рік
+				випуску, а також переглядати повний список книг.
+			</p>
+
+			<p>Метою цього застосунку є закріплення навичок роботи з маршрутами, контролерами, моделями та шаблонами EJS.</p>
+			<a
+				href="/books"
+				class="btn btn-primary">
+				Перейти до списку книг
+			</a>
+		</main>
+		<%-include('./components/footer.ejs') %>
+	</body>
+</html>

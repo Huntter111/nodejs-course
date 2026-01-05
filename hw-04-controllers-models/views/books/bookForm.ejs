@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=book.id ? 'Редагування товару' : 'Створення товару'%></title>
+		<link
+			rel="stylesheet"
+			href="/stylesheets/style.css" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="images/favicon/apple-touch-icon.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="images/favicon/favicon-32x32.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="images/favicon/favicon-16x16.png" />
+		<link
+			rel="manifest"
+			href="images/favicon/site.webmanifest" />
+	</head>
+	<body>
+		<%-include('../components/header.ejs', {activePage:'books'}) %>
+		<h1><%=book.id? 'Редагування даних книги': 'Створення запису про книгу' %></h1>
+		<main>
+			<form
+				class="book-form"
+				action="<%= book.id ? `/books/update/${book.id}` : '/books/create' %>"
+				method="post">
+				<label>
+					<span>Назва книги</span>
+					<input
+						value="<%= book.title %>"
+						type="text"
+						name="title"
+						required />
+				</label>
+
+				<label>
+					<span>Автор книги</span>
+					<input
+						value="<%= book.author %>"
+						type="text"
+						name="author"
+						required />
+				</label>
+
+				<label>
+					<span>Рік випуску</span>
+					<input
+						value="<%= book.year %>"
+						type="number"
+						name="year"
+						required />
+				</label>
+
+				<div class="form-actions">
+					<button
+						class="btn btn__primary"
+						type="submit">
+						Зберегти
+					</button>
+				</div>
+			</form>
+			<a
+				href="/books"
+				class="btn btn-primary">
+				← До списку книг
+			</a>
+		</main>
+		<%-include('../components/footer.ejs') %>
+	</body>
+</html>

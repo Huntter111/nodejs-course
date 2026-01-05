@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link
+			rel="stylesheet"
+			href="/stylesheets/style.css" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/images/favicon/apple-touch-icon.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/images/favicon/favicon-32x32.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/images/favicon/favicon-16x16.png" />
+		<link
+			rel="manifest"
+			href="/images/favicon/site.webmanifest" />
+
+		<script>
+			async function deleteProduct(id) {
+				try {
+					const response = await fetch('/books', {
+						method: 'delete',
+						headers: {
+							'content-type': 'application/json',
+						},
+						body: JSON.stringify({ id }),
+					})
+					if (response.ok) {
+						window.location.reload()
+					}
+				} catch (error) {
+					console.log(error.message)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<%-include('../components/header.ejs',{activePage:'books'}) %>
+		<main class="container">
+			<div>
+				<h1 class="page-title"><%= title %></h1>
+				<div class="filter-form">
+					<a
+						href="/books/create"
+						class="btn btn-primary">
+						Додати нову книгу
+					</a>
+					<form
+						class="filters"
+						method="get"
+						action="/books">
+						<label>
+							<span>Пошук за автором</span>
+							<input
+								type="text"
+								name="author"
+								value="<%= filters?.author ?? '' %>"
+								placeholder="Напр. Stephen King" />
+						</label>
+						<label>
+							<span>Фільтр за роком</span>
+							<input
+								type="number"
+								name="year"
+								value="<%= filters?.year ?? '' %>"
+								placeholder="Напр. 2020" />
+						</label>
+						<div class="filters__actions">
+							<button
+								class="btn btn-primary"
+								type="submit">
+								Знайти
+							</button>
+							<a
+								class="btn btn-ghost"
+								href="/books"
+								>Скинути</a
+							>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<% if (!books || books.length === 0) { %>
+			<p class="empty">Книг поки немає</p>
+			<% } else { %>
+
+			<div class="books-grid">
+				<% books.forEach((book, index) => { %>
+				<div class="book-card">
+					<div class="book-card__header">
+						<span class="book-id">#<%= index + 1 %></span>
+					</div>
+
+					<div class="book-card__body">
+						<h2 class="book-title"><%= book.title %></h2>
+						<p class="book-author"><%= book.author %></p>
+
+						<div class="book-meta">
+							<span>Рік видання</span>
+							<strong><%= book.year %></strong>
+						</div>
+					</div>
+					<div class="book-card__actions">
+						<a
+							href="/books/<%= book.id %>"
+							class="btn btn-detail"
+							>Детальніше</a
+						>
+						<a
+							href="/books/update/<%= book.id %>"
+							class="btn btn-edit">
+							Редагувати
+						</a>
+						<button
+							class="btn btn-delete"
+							onclick="deleteProduct(<%= book.id %>)">
+							Видалити
+						</button>
+					</div>
+				</div>
+				<% }) %>
+			</div>
+
+			<% } %>
+		</main>
+		<%-include('../components/footer.ejs') %>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0" />
+	<head>
+		<title><%= title %></title>
+		<link
+			rel="stylesheet"
+			href="/stylesheets/style.css" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="images/favicon/apple-touch-icon.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="images/favicon/favicon-32x32.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="images/favicon/favicon-16x16.png" />
+		<link
+			rel="manifest"
+			href="images/favicon/site.webmanifest" />
+	</head>
+	<body>
+		<%-include('./components/header.ejs', {activePage:'main'}) %>
+		<main>
+			<h1><%= title %></h1>
+			<p>
+				Ласкаво просимо до <strong><%= title %></strong> — навчального вебзастосунку для керування бібліотекою книг.
+			</p>
+
+			<p>
+				Тут ви можете переглядати список книг, додавати нові видання, редагувати інформацію про автора та рік випуску.
+			</p>
+			<a
+				href="/books"
+				class="btn btn-primary">
+				Перейти до списку книг
+			</a>
+		</main>
+		<%-include('./components/footer.ejs') %>
+	</body>
+</html>

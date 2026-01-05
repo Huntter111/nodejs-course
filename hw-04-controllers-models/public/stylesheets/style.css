@@ -1,0 +1,366 @@
+/* Cleaned stylesheet focused on a dark-themed card grid for the books app */
+
+:root {
+	--bg: #0b1220;
+	--card: #0f1724;
+	--card-variant: #121827;
+	--border: rgba(255, 255, 255, 0.06);
+	--text: #eaf0ff;
+	--muted: rgba(234, 240, 255, 0.65);
+	--accent: #6ee7b7;
+	--accent-2: #60a5fa;
+	--shadow: 0 12px 30px rgba(2, 6, 23, 0.6);
+	--radius: 14px;
+	--gap: 20px;
+}
+
+* {
+	box-sizing: border-box;
+}
+html,
+body {
+	height: 100%;
+	margin: 0;
+}
+html {
+	min-height: 100%;
+	background: radial-gradient(1200px 800px at 20% 0%, rgba(94, 92, 230, 0.12), transparent 60%),
+		radial-gradient(900px 700px at 80% 10%, rgba(59, 130, 246, 0.1), transparent 55%), var(--bg);
+}
+body {
+	margin: 0;
+	min-height: 100%;
+	font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	color: var(--text);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	/* ВАЖЛИВО: прибери фон з body */
+	background: transparent;
+
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 16px;
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex-grow: 1;
+}
+
+/* Navigation */
+
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	padding: 14px 18px;
+	/* margin-bottom: 20px; */
+
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+
+/* Menu list */
+nav ul {
+	display: flex;
+	gap: 8px;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Links */
+nav a {
+	position: relative;
+
+	padding: 8px 12px;
+	border-radius: 8px;
+
+	color: var(--muted);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 14px;
+
+	transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+/* Hover */
+nav a:hover {
+	color: var(--text);
+	background: rgba(255, 255, 255, 0.04);
+}
+
+/* Active link */
+nav a.active {
+	color: var(--accent-2);
+	background: rgba(96, 165, 250, 0.15);
+}
+
+/* Books grid */
+.books-grid {
+	margin: 32px 0;
+	display: grid;
+	/* grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); */
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+	gap: var(--gap);
+	align-items: start;
+	/* @media (max-width: 768px) {
+		grid-template-columns: repeat(2, 1fr);
+	} */
+}
+
+/* Card */
+.book-card {
+	background: linear-gradient(180deg, var(--card), var(--card-variant));
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.book-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 20px 45px rgba(2, 6, 23, 0.7);
+}
+
+.book-card__header {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	padding: 12px 14px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+.book-card__header img {
+	width: 56px;
+	height: 80px;
+	object-fit: cover;
+	border-radius: 8px;
+	flex-shrink: 0;
+}
+
+.book-card__body {
+	padding: 14px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	flex: 1;
+}
+.book-title {
+	margin: 0;
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: var(--text);
+}
+.book-author {
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.95rem;
+}
+
+.book-meta {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	align-items: center;
+	margin-top: 6px;
+}
+.book-meta .meta-item {
+	font-size: 0.88rem;
+	color: var(--muted);
+	background: rgba(255, 255, 255, 0.02);
+	padding: 6px 10px;
+	border-radius: 10px;
+}
+
+/* Actions */
+.book-card__actions {
+	display: flex;
+	gap: 10px;
+	padding: 12px 14px;
+	border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+.btn {
+	flex: 1;
+	padding: 10px 12px;
+	border-radius: 10px;
+	font-weight: 600;
+	font-size: 0.95rem;
+	cursor: pointer;
+	border: none;
+	color: var(--card);
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.3s;
+}
+.btn-ghost {
+	/* margin: 32px 0; */
+	display: inline-block;
+	/* background: transparent; */
+	background: var(--bg);
+	border: 1px solid var(--border);
+	color: var(--text);
+}
+.btn-primary {
+	display: inline-block;
+	margin: 12px 0;
+	background: linear-gradient(135deg, var(--accent), var(--accent-2));
+	color: #0b1220;
+	border: none;
+}
+.btn-detail {
+	background: linear-gradient(90deg, var(--accent), #29d58c);
+	color: #042017;
+}
+.btn-edit {
+	background: linear-gradient(90deg, var(--accent-2), #3b82f6);
+}
+.btn-delete {
+	background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+.btn:hover {
+	filter: brightness(1.03);
+	transform: translateY(-1px);
+}
+
+/* ! Header ----------------------------------------------- */
+.header {
+	padding: 24px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.image__container {
+	width: 48px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+.image__container img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+@media (max-width: 720px) {
+	.book-card__header img {
+		width: 48px;
+		height: 68px;
+	}
+	.books-grid {
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+		gap: 14px;
+	}
+	main {
+		margin: 18px auto;
+	}
+}
+/* ! Foooter ---------------------------------------------------- */
+.footer {
+	margin-top: auto;
+	padding: 24px 0 12px;
+	text-align: center;
+	color: var(--muted);
+	border-top: 1px solid var(--border);
+}
+
+.footer h3 {
+	margin: 0 0 6px;
+	font-size: 16px;
+	color: var(--text);
+}
+
+.footer p {
+	margin: 0;
+	font-size: 14px;
+}
+/* ! FORM ----------------------------------------------------- */
+.book-form {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+
+	max-width: 520px;
+	padding: 24px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+.book-form label {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	font-size: 14px;
+	color: var(--muted);
+}
+
+.book-form input {
+	background: var(--card-variant);
+	border: 1px solid var(--border);
+	border-radius: 10px;
+
+	padding: 10px 12px;
+	font-size: 15px;
+	color: var(--text);
+
+	outline: none;
+	transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+.book-form input:focus {
+	border-color: var(--accent-2);
+	box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+}
+
+/* ! CSS для форми фільтрів (під твою темну тему) ============= */
+.filter-form {
+	display: grid;
+	grid-template-columns: 200px auto;
+	align-items: start;
+	justify-content: space-between;
+	gap: 32px;
+}
+.filters {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	padding: 16px;
+	display: grid;
+	/* max-width: 768px; */
+	grid-template-columns: 300px 180px;
+	gap: 12px;
+	align-items: end;
+	/* margin: 16px 0 20px; */
+}
+.filters label {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	color: var(--muted);
+	font-size: 14px;
+}
+.filters input {
+	background: var(--card-variant);
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	padding: 10px 12px;
+	color: var(--text);
+	outline: none;
+}
+.filters input:focus {
+	border-color: var(--accent-2);
+	box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+}
+.filters__actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
