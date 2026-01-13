@@ -100,7 +100,13 @@ nav a.active {
 	color: var(--accent-2);
 	background: rgba(96, 165, 250, 0.15);
 }
-
+.empty {
+	display: flex;
+	align-items: start;
+	flex-direction: column;
+	font-size: 28px;
+	font-weight: 600;
+}
 /* Books grid */
 .books-grid {
 	margin: 32px 0;

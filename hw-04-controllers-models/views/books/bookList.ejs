@@ -90,7 +90,14 @@
 			</div>
 
 			<% if (!books || books.length === 0) { %>
-			<p class="empty">Книг поки немає</p>
+			<p class="empty">
+				<span>Книги не знайдені</span>
+				<a
+					href="/books"
+					class="btn btn-primary">
+					Спробувати знову
+				</a>
+			</p>
 			<% } else { %>
 
 			<div class="books-grid">
