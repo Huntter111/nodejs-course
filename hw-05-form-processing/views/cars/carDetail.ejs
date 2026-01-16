@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href="/images/favicon.ico" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/style.css" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/carDetail.css" />
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title><%= title %></title>
+	</head>
+
+	<body>
+		<div class="app">
+			<%- include('../components/header.ejs', { activePage: 'cars' }) %>
+
+			<main class="car-detail container">
+				<div class="car-detail__header">
+					<div>
+						<p class="car-detail__kicker">Деталі автомобіля</p>
+						<h1 class="car-detail__title"><%= car.brand %></h1>
+						<p class="car-detail__plate"><%= car.plate %></p>
+					</div>
+
+					<div class="car-detail__year">
+						<span>Рік випуску</span>
+						<strong><%= car.year %></strong>
+					</div>
+				</div>
+
+				<div class="car-detail__content">
+					<div class="car-detail__image">
+						<img
+							src="<%= car.photo ? `/${car.photo}` : '/images/no-available-car.jpg' %>"
+							alt="Фото авто: <%= car.brand %>" />
+					</div>
+
+					<div class="car-detail__info">
+						<div class="car-detail__card">
+							<h2 class="car-detail__section-title">Опис</h2>
+
+							<% if (car.description && car.description.trim().length > 0) { %>
+							<p class="car-detail__description"><%= car.description %></p>
+							<% } else { %>
+							<p class="car-detail__description car-detail__muted">Опис відсутній.</p>
+							<% } %>
+						</div>
+
+						<div class="car-detail__meta-grid">
+							<div class="car-detail__meta">
+								<span>ID</span>
+								<strong><%= car.id %></strong>
+							</div>
+							<div class="car-detail__meta">
+								<span>Номер</span>
+								<strong><%= car.plate %></strong>
+							</div>
+							<div class="car-detail__meta">
+								<span>Марка</span>
+								<strong><%= car.brand %></strong>
+							</div>
+							<div class="car-detail__meta">
+								<span>Рік</span>
+								<strong><%= car.year %></strong>
+							</div>
+						</div>
+
+						<div class="btn-wrapper car-detail__actions">
+							<a
+								href="/cars"
+								class="btn btn-primary"
+								>← Всі автомобілі</a
+							>
+							<a
+								href="/cars/update/<%= car.id %>"
+								class="btn btn-edit"
+								>Редагувати</a
+							>
+						</div>
+					</div>
+				</div>
+			</main>
+
+			<%- include('../components/footer.ejs') %>
+		</div>
+	</body>
+</html>

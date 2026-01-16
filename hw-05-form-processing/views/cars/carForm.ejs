@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href="/images/favicon.ico" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/style.css" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/carForm.css" />
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<script>
+			function handleImageInput(event) {
+				const file = event.target.files[0]
+				if (file) {
+					const imgEl = document.getElementById('carPhoto')
+					const reader = new FileReader()
+					reader.onload = function (e) {
+						imgEl.src = e.target.result
+					}
+					reader.readAsDataURL(file)
+				}
+			}
+		</script>
+		<title><%=car.id ? 'Редагування машини' : 'Створення машини'%></title>
+	</head>
+	<body>
+		<div class="app">
+			<%-include('../components/header.ejs', {activePage:'cars'}) %>
+			<div class="headline container">
+				<h1 class="title"><%= car.id ? 'Редагування даних автомобіля' : 'Створення запису про автомобіль' %></h1>
+
+				<a
+					href="/cars"
+					class="btn btn-primary headline__btn">
+					← Всі автомобілі
+				</a>
+			</div>
+			<main>
+				<form
+					class="car-form"
+					action="<%= car.id ? `/cars/update/${car.id}` : '/cars/create' %>"
+					method="post"
+					enctype="multipart/form-data">
+					<label>
+						<span>Марка авто</span>
+						<input
+							value="<%= car.brand %>"
+							type="text"
+							name="brand"
+							required />
+					</label>
+
+					<label>
+						<span>Номер авто книги</span>
+						<input
+							value="<%= car.plate %>"
+							type="text"
+							name="plate"
+							required />
+					</label>
+
+					<label>
+						<span>Рік випуску</span>
+						<input
+							value="<%= car.year %>"
+							type="number"
+							name="year"
+							required />
+					</label>
+					<label>
+						<span>Опис авто</span>
+						<input
+							value="<%= car.year %>"
+							type="text"
+							name="description" />
+					</label>
+					<div class="car-form__image-update">
+						<label>
+							<span>Фото авто</span>
+							<input
+								value="<%= car.photo %>"
+								type="file"
+								name="photo"
+								accept="image/*"
+								onchange="handleImageInput(event)" />
+						</label>
+						<div class="car-form__image-wrapper">
+							<img
+								id="carPhoto"
+								src="<%=car.photo?`/${car.photo}` : '/images/no-available-car.jpg' %>" />
+						</div>
+					</div>
+
+					<div class="form-actions">
+						<button
+							class="btn btn__primary"
+							type="submit">
+							Зберегти
+						</button>
+					</div>
+				</form>
+			</main>
+			<%-include('../components/footer.ejs') %>
+		</div>
+	</body>
+</html>

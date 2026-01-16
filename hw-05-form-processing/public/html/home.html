@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href="/images/favicon.ico" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/style.css" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/footer.css" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/homepage.css" />
+		<title>Cars Fleet App</title>
+		<script defer>
+			window.addEventListener('DOMContentLoaded', () => {
+				const el = document.getElementById('year')
+				if (el) el.textContent = new Date().getFullYear()
+			})
+		</script>
+	</head>
+	<body>
+		<div class="app">
+			<header>
+				<div class="header-inner">
+					<div class="image__container">
+						<a href="/">
+							<img
+								src="/images/logo.png"
+								alt="Image" />
+						</a>
+					</div>
+					<nav>
+						<ul>
+							<li>
+								<a
+									href="/"
+									class="active"
+									>Home</a
+								>
+							</li>
+							<li>
+								<a href="/about">About</a>
+							</li>
+							<li>
+								<a href="/cars">Cars</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<main class="home">
+				<section class="hero">
+					<div class="hero__content">
+						<p class="hero__kicker">Fleet management · Node.js + Express</p>
+						<h1 class="hero__title">Cars Fleet App</h1>
+						<p class="hero__subtitle">
+							Додаток для автопарку: додавай авто, редагуй дані, видаляй записи та переглядай список.
+						</p>
+
+						<div class="hero__actions">
+							<a
+								href="/cars"
+								class="btn btn-primary"
+								>Перейти до автопарку</a
+							>
+							<a
+								href="/about"
+								class="btn"
+								>Дізнатись більше</a
+							>
+						</div>
+
+						<div class="hero__stats">
+							<div class="stat">
+								<span class="stat__label">CRUD</span>
+								<strong class="stat__value">Create · Read · Update · Delete</strong>
+							</div>
+							<div class="stat">
+								<span class="stat__label">Функції</span>
+								<strong class="stat__value">Марка · Рік · Номер · Фото</strong>
+							</div>
+						</div>
+					</div>
+
+					<div class="hero__card">
+						<div class="hero__card-head">
+							<span class="pill">Швидкий старт</span>
+						</div>
+
+						<ol class="steps">
+							<li class="step">
+								<span class="step__num">1</span>
+								<div class="step__text">
+									<strong>Додай авто</strong>
+									<span>марка, рік, номер та фото</span>
+								</div>
+							</li>
+							<li class="step">
+								<span class="step__num">2</span>
+								<div class="step__text">
+									<strong>Керуй записами</strong>
+									<span>редагування та видалення</span>
+								</div>
+							</li>
+							<li class="step">
+								<span class="step__num">3</span>
+								<div class="step__text">
+									<strong>Переглядай деталі</strong>
+									<span>окрема сторінка для кожного авто</span>
+								</div>
+							</li>
+						</ol>
+
+						<div class="hero__card-actions">
+							<a
+								href="/cars/create"
+								class="btn btn__primary"
+								>+ Додати авто</a
+							>
+						</div>
+					</div>
+				</section>
+
+				<section class="features">
+					<h2 class="features__title">Що вміє додаток</h2>
+
+					<div class="features__grid">
+						<article class="feature">
+							<h3>Список авто</h3>
+							<p>Зручна сітка карточок з основними даними.</p>
+						</article>
+
+						<article class="feature">
+							<h3>Деталі</h3>
+							<p>Окрема сторінка з фото, описом та метаданими.</p>
+						</article>
+
+						<article class="feature">
+							<h3>Форми</h3>
+							<p>Створення та редагування записів з прев’ю зображення.</p>
+						</article>
+					</div>
+				</section>
+			</main>
+			<footer class="site-footer">
+				<div class="footer-inner container">
+					<p class="footer-brand">Cars Fleet App</p>
+
+					<p class="footer-copy">© <span id="year"></span> Node.js Course · Усі права захищені</p>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
