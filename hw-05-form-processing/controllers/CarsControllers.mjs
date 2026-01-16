@@ -65,16 +65,21 @@ class CarsController {
 	static updateCar(req, res) {
 		try {
 			const id = req.params.id
-
 			const car = Cars.getCarById(id)
-			if (car.photo) {
-				deleteFileFromDir('uploads', car.photo)
+
+			const carData = { ...req.body }
+			// Якщо користувач завантажив нове фото
+			if (req.file) {
+				// видаляємо старий файл тільки тоді, коли є новий
+				if (car.photo) {
+					deleteFileFromDir('uploads', car.photo)
+				}
+				carData.photo = req.file.filename
+			} else {
+				// якщо файл не вибрали - зберігаємо старе фото
+				carData.photo = car.photo
 			}
 
-			const carData = req.body
-			if (req.file) {
-				carData.photo = req.file.filename
-			}
 			Cars.updateCar(id, carData)
 			res.redirect('/cars')
 		} catch (error) {
