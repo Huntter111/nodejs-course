@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href="/images/favicon.ico" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/style.css" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/carList.css" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/footer.css" />
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title><%= title %></title>
+		<script>
+			async function deleteCar(id) {
+				try {
+					const response = await fetch('/cars', {
+						method: 'delete',
+						headers: {
+							'content-type': 'application/json',
+						},
+						body: JSON.stringify({ id }),
+					})
+					if (response.ok) {
+						window.location.reload()
+					}
+				} catch (error) {
+					console.log(error.message)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="app">
+			<%-include('../components/header.ejs', {activePage:'cars'}) %>
+
+			<main>
+				<% if (!cars || cars.length === 0) { %>
+				<p class="empty">
+					<span>Автомобілі не знайдені</span>
+					<a
+						href="/cars"
+						class="btn btn-primary">
+						Спробувати знову
+					</a>
+				</p>
+				<% } else { %>
+				<div class="header-action">
+					<h1>Список автомобілів</h1>
+					<a
+						href="/cars/create"
+						class="btn btn-primary">
+						+ Додати авто
+					</a>
+					<!-- <div class="btn-wrapper">
+					</div> -->
+				</div>
+				<div class="cars-grid">
+					<% cars.forEach((car, index) => { %>
+					<div class="car-card">
+						<div class="car-card__images">
+							<img
+								src="<%= car.photo ??'/images/no-available-car.jpg'  %>"
+								alt="Image" />
+						</div>
+						<!-- <div class="car-card__header">
+							<span class="car-id">#<%= index + 1 %></span>
+						</div> -->
+						<div class="car-card__body">
+							<h2 class="car-brand"><%= car.brand %></h2>
+							<p class="car-plate"><%= car.plate %></p>
+
+							<div class="car-meta">
+								<span>Рік випуску</span>
+								<strong><%= car.year %></strong>
+							</div>
+						</div>
+						<div class="car-card__actions">
+							<a
+								href="/cars/<%= car.id %>"
+								class="btn btn-detail"
+								>Детальніше</a
+							>
+							<a
+								href="/cars/update/<%= car.id %>"
+								class="btn btn-edit">
+								Редагувати
+							</a>
+							<button
+								class="btn btn-delete"
+								onclick="deleteCar(<%= car.id %>)">
+								Видалити
+							</button>
+						</div>
+					</div>
+					<% }) %>
+				</div>
+
+				<% } %>
+			</main>
+			<%-include('../components/footer.ejs') %>
+		</div>
+	</body>
+</html>
