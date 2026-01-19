@@ -1,0 +1,351 @@
+/* =========================
+   Base theme + reset
+   ========================= */
+
+:root {
+	--bg: #0b1220;
+	--surface: rgba(255, 255, 255, 0.06);
+	--surface-2: rgba(255, 255, 255, 0.09);
+	--border: rgba(255, 255, 255, 0.12);
+
+	--text: rgba(255, 255, 255, 0.92);
+	--muted: rgba(255, 255, 255, 0.68);
+
+	--primary: #6ea8ff;
+	--primary-2: #8b5cf6;
+	--danger: #ff5c7a;
+	--success: #36d399;
+
+	--shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+	--radius: 16px;
+
+	--container: 1100px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	min-height: 100vh;
+	/* margin: 0; */
+	/* display: flex; */
+	/* flex-direction: column; */
+	color: var(--text);
+	font-family:
+		system-ui,
+		-apple-system,
+		Segoe UI,
+		Roboto,
+		Arial,
+		sans-serif;
+	line-height: 1.5;
+
+	/* Background with subtle gradient */
+	background:
+		radial-gradient(900px 500px at 15% 10%, rgba(110, 168, 255, 0.28), transparent 60%),
+		radial-gradient(900px 500px at 85% 15%, rgba(139, 92, 246, 0.22), transparent 55%),
+		radial-gradient(700px 600px at 50% 95%, rgba(54, 211, 153, 0.1), transparent 60%),
+		linear-gradient(180deg, #071022 0%, #050914 100%);
+}
+.title {
+	/* text-align: center; */
+}
+.headline {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	gap: 16px;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.container {
+	width: min(var(--container), calc(100% - 32px));
+	margin-inline: auto;
+}
+.header-action {
+	margin: 32px 0;
+	h1 {
+		margin: 0;
+	}
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+}
+/* =========================
+   Layout: header / main /
+   ========================= */
+
+.app {
+	min-height: 100vh;
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 0 16px;
+
+	display: flex;
+	flex-direction: column;
+}
+main {
+	flex-grow: 1;
+}
+
+.image__container {
+	width: 100px;
+	height: 100px;
+	a {
+		display: inline-block;
+		border-radius: 16px;
+		width: 100px;
+		height: 100px;
+	}
+	img {
+		border-radius: 16px;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+}
+header.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	backdrop-filter: blur(10px);
+	background: rgba(8, 13, 25, 0.6);
+	border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	column-gap: 16px;
+	padding: 14px 0;
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-weight: 700;
+	letter-spacing: 0.2px;
+}
+
+.brand-badge {
+	width: 36px;
+	height: 36px;
+	border-radius: 12px;
+	background: linear-gradient(135deg, var(--primary), var(--primary-2));
+	box-shadow: 0 10px 30px rgba(110, 168, 255, 0.25);
+}
+
+main.site-main {
+	flex: 1;
+	padding: 28px 0 44px;
+}
+
+/* =========================
+   Cards / sections
+   ========================= */
+
+.card {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+
+.card-padding {
+	padding: 18px;
+}
+
+.section-title {
+	margin: 0 0 12px;
+	font-size: 22px;
+	letter-spacing: 0.2px;
+}
+
+.muted {
+	color: var(--muted);
+}
+
+/* =========================
+   Buttons
+   ========================= */
+.btn-wrapper {
+	margin: 32px 0;
+}
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+
+	padding: 10px 14px;
+	border-radius: 12px;
+	border: 1px solid var(--border);
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--text);
+
+	cursor: pointer;
+	user-select: none;
+	transition:
+		transform 120ms ease,
+		background 120ms ease,
+		border-color 120ms ease;
+}
+
+.btn:hover {
+	transform: translateY(-1px);
+	background: rgba(255, 255, 255, 0.09);
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.btn:active {
+	transform: translateY(0px);
+}
+
+.btn:focus-visible {
+	outline: 2px solid rgba(110, 168, 255, 0.65);
+	outline-offset: 2px;
+}
+
+.btn-primary {
+	border: 1px solid rgba(110, 168, 255, 0.35);
+	background: linear-gradient(135deg, rgba(110, 168, 255, 0.75), rgba(139, 92, 246, 0.65));
+}
+
+.btn-primary:hover {
+	border-color: rgba(110, 168, 255, 0.55);
+	background: linear-gradient(135deg, rgba(110, 168, 255, 0.9), rgba(139, 92, 246, 0.78));
+}
+/* Підтримка твоєї помилки в класі: btn__primary */
+.btn__primary {
+	border: 1px solid rgba(110, 168, 255, 0.35);
+	background: linear-gradient(135deg, rgba(110, 168, 255, 0.75), rgba(139, 92, 246, 0.65));
+}
+
+.btn__primary:hover {
+	border-color: rgba(110, 168, 255, 0.55);
+	background: linear-gradient(135deg, rgba(110, 168, 255, 0.9), rgba(139, 92, 246, 0.78));
+}
+.btn-danger {
+	border: 1px solid rgba(255, 92, 122, 0.35);
+	background: rgba(255, 92, 122, 0.14);
+}
+
+.btn-danger:hover {
+	border-color: rgba(255, 92, 122, 0.55);
+	background: rgba(255, 92, 122, 0.2);
+}
+
+/* =========================
+   NAV styles for your markup
+   <nav>
+     <ul>
+       <li><a href="/">Home</a></li>
+       ...
+     </ul>
+   </nav>
+   ========================= */
+
+nav {
+	display: flex;
+	align-items: center;
+}
+
+nav ul {
+	margin: 0;
+	padding: 6px;
+	list-style: none;
+
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+}
+
+nav li {
+	margin: 0;
+}
+
+nav a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	padding: 9px 14px;
+	border-radius: 999px;
+
+	color: var(--muted);
+	font-weight: 600;
+	font-size: 14px;
+	letter-spacing: 0.2px;
+
+	transition:
+		background 120ms ease,
+		color 120ms ease,
+		transform 120ms ease;
+}
+
+nav a:hover {
+	color: var(--text);
+	background: rgba(255, 255, 255, 0.08);
+	transform: translateY(-1px);
+}
+
+/* Active link option #1: if you add class="active" to <a> */
+nav a.active {
+	color: var(--text);
+	background: linear-gradient(135deg, rgba(110, 168, 255, 0.35), rgba(139, 92, 246, 0.28));
+	border: 1px solid rgba(110, 168, 255, 0.25);
+}
+
+/* Active link option #2: if your server renders aria-current="page" */
+nav a[aria-current='page'] {
+	color: var(--text);
+	background: linear-gradient(135deg, rgba(110, 168, 255, 0.35), rgba(139, 92, 246, 0.28));
+	border: 1px solid rgba(110, 168, 255, 0.25);
+}
+
+/* =========================
+   Responsive tweaks
+   ========================= */
+
+@media (max-width: 520px) {
+	.header-inner {
+		flex-direction: column;
+		/* align-items: stretch; */
+		nav {
+			width: 100%;
+			ul {
+				padding: 12px 12px;
+			}
+		}
+	}
+
+	nav ul {
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	nav a {
+		flex: 1;
+		padding: 10px 12px;
+	}
+}

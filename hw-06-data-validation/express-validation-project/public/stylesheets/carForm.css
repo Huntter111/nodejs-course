@@ -1,0 +1,249 @@
+/* ! ================= NEW */
+/* =========================
+   Car form layout
+   ========================= */
+.has-error input {
+	border-color: rgba(255, 92, 122, 0.6);
+	background: rgba(255, 92, 122, 0.08);
+}
+
+.field-error {
+	margin-top: -4px;
+	display: block;
+	font-size: 13px;
+	color: #ff5c7a;
+}
+.car-form {
+	max-width: 760px;
+	margin: 18px auto 0;
+	padding: 24px;
+
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+
+	display: grid;
+	gap: 14px;
+}
+
+/* Заголовок над формою, якщо треба */
+.car-form + .btn-wrapper {
+	margin-top: 18px;
+}
+
+/* Не чіпаємо глобальні label — стилізуємо тільки в межах форми */
+.car-form label {
+	display: grid;
+	gap: 8px;
+}
+
+.car-form label > span {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--muted);
+}
+
+/* Inputs тільки в формі */
+.car-form input,
+.car-form select,
+.car-form textarea {
+	width: 100%;
+	padding: 11px 12px;
+	border-radius: 12px;
+	border: 1px solid var(--border);
+	background: rgba(0, 0, 0, 0.25);
+	color: var(--text);
+	outline: none;
+
+	transition:
+		border-color 120ms ease,
+		background 120ms ease,
+		transform 120ms ease;
+}
+
+.car-form input:focus,
+.car-form select:focus,
+.car-form textarea:focus {
+	border-color: rgba(110, 168, 255, 0.55);
+	background: rgba(0, 0, 0, 0.34);
+}
+
+.car-form input::placeholder,
+.car-form textarea::placeholder {
+	color: rgba(255, 255, 255, 0.45);
+}
+
+/* При number прибираємо "стрілки" в деяких браузерах (опційно) */
+.car-form input[type='number']::-webkit-outer-spin-button,
+.car-form input[type='number']::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+.car-form input[type='number'] {
+	-moz-appearance: textfield;
+}
+
+/* =========================
+   Image upload block
+   ========================= */
+
+.car-form__image-update {
+	display: grid;
+	grid-template-columns: 1fr 120px;
+	gap: 16px;
+	align-items: end;
+
+	padding-top: 6px;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 620px) {
+	.car-form__image-update {
+		grid-template-columns: 1fr;
+		align-items: stretch;
+	}
+}
+
+/* File input - робимо охайним */
+.car-form input[type='file'] {
+	padding: 10px;
+	cursor: pointer;
+}
+
+/* WebKit кнопка "Choose file" */
+.car-form input[type='file']::-webkit-file-upload-button {
+	border: 1px solid rgba(110, 168, 255, 0.35);
+	background: rgba(110, 168, 255, 0.14);
+	color: var(--text);
+	padding: 8px 10px;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+.car-form input[type='file']::-webkit-file-upload-button:hover {
+	border-color: rgba(110, 168, 255, 0.55);
+	background: rgba(110, 168, 255, 0.2);
+}
+
+.car-form__image-wrapper {
+	width: 120px;
+	height: 100px;
+	border-radius: 8px;
+	overflow: hidden;
+	object-fit: cover;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	background: rgba(0, 0, 0, 0.25);
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 620px) {
+	.car-form__image-wrapper {
+		width: 100%;
+		height: 220px;
+	}
+}
+
+.car-form__image-wrapper img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* =========================
+   Actions
+   ========================= */
+
+.form-actions {
+	margin-top: 6px;
+	display: flex;
+	gap: 10px;
+	justify-content: flex-start;
+}
+
+/* Підтримка твоєї помилки в класі: btn__primary */
+.btn__primary {
+	min-width: 120px;
+	border: 1px solid rgba(110, 168, 255, 0.35);
+	background: linear-gradient(135deg, rgba(110, 168, 255, 0.75), rgba(139, 92, 246, 0.65));
+}
+
+.btn__primary:hover {
+	border-color: rgba(110, 168, 255, 0.55);
+	background: linear-gradient(135deg, rgba(110, 168, 255, 0.9), rgba(139, 92, 246, 0.78));
+}
+
+/* Маленьке покращення кнопок саме у формі */
+.car-form .btn {
+	min-height: 42px;
+}
+
+/* При бажанні: зробити submit ширшим на мобілці */
+@media (max-width: 520px) {
+	.form-actions .btn {
+		width: 100%;
+	}
+}
+
+/* !  */
+/* =========================
+   Headline (title + back button)
+   ========================= */
+
+.headline {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+
+	margin: 18px auto 16px;
+	padding: 14px 16px;
+
+	border-radius: var(--radius);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(10px);
+}
+
+.title {
+	text-align: center;
+	margin: 0;
+	font-size: 28px;
+	font-weight: 900;
+	letter-spacing: 0.2px;
+	line-height: 1.15;
+
+	/* щоб заголовок не "випихав" кнопку */
+	min-width: 0;
+}
+
+/* обмежуємо ширину заголовка, щоб кнопка завжди влізала */
+.title {
+	max-width: 70ch;
+}
+
+.headline__btn {
+	flex: 0 0 auto;
+	white-space: nowrap;
+}
+
+/* Mobile: стає колонкою */
+@media (max-width: 750px) {
+	.headline {
+		width: 100%;
+		flex-direction: column;
+		align-items: stretch;
+		margin: 20px 0px 20px 0px;
+	}
+
+	.headline__btn {
+		width: 100%;
+	}
+
+	.title {
+		font-size: 22px;
+		max-width: 100%;
+	}
+}
