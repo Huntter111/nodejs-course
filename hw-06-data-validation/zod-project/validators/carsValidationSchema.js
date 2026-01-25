@@ -1,4 +1,4 @@
-import z from 'zod'
+import * as z from 'zod'
 const currentYear = new Date().getFullYear()
 export const carsValidationSchema = z.object({
 	brand: z

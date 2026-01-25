@@ -54,6 +54,7 @@ class CarsController {
 			if (req.file) {
 				carData.photo = req.file.filename
 			}
+
 			Cars.addNewCar(carData)
 			res.redirect('/cars')
 		} catch (error) {
@@ -81,7 +82,7 @@ class CarsController {
 				carData.photo = car.photo
 			}
 
-			Cars.updateCar(id, carData)
+			Cars.updateCar(id, { ...carData, year: Number(carData.year) })
 			res.redirect('/cars')
 		} catch (error) {
 			res.status(500).render('error', {
