@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register page</title>
+  <link rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+
+<body>
+  <%- include('sections/header', { title: 'User form' }) %> <%
+if(errors?.length){ %>
+  <h1>Помилки валідації!</h1>
+  <ul>
+    <% for (const error of errors) {%>
+    <li><%= error %></li>
+    <% } %>
+  </ul>
+  <hr />
+  <%} %>
+  <form action="/users/register<%= data?.id ? '/' + data.id : '' %>" method="post">
+    <input type="text" name="name" placeholder="Name" value="<%= data ? data.name : '' %>" />
+    <input type="email" name="email" placeholder="Email" value="<%= data ? data.email : '' %>" />
+    <input type="password" name="password" placeholder="Password" value="<%= data ? data.password : '' %>" />
+    <button type="submit"><%= data?.id ? 'Update' : 'Register' %></button>
+  </form>
+</body>
+
+</html>
