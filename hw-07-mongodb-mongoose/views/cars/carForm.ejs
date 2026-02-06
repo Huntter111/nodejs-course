@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/carForm.css" />
+  <link rel="stylesheet" href="/stylesheets/footer.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    function handleImageInput(event) {
+      const file = event.target.files[0]
+      if (file) {
+        const imgEl = document.getElementById('carPhoto')
+        const reader = new FileReader()
+        reader.onload = function(e) {
+          imgEl.src = e.target.result
+        }
+        reader.readAsDataURL(file)
+      }
+    }
+  </script>
+  <title><%= car?._id ? 'Редагування машини' : 'Створення машини' %></title>
+</head>
+
+<body>
+  <div class="app">
+    <%-include('../components/header.ejs', {activePage:'cars'}) %>
+
+    <div class="headline container">
+      <h1 class="title">
+        <%= car?._id ? 'Редагування даних автомобіля' : 'Створення запису про автомобіль' %>
+      </h1>
+
+      <a href="/cars" class="btn btn-primary headline__btn">
+        ← Всі автомобілі
+      </a>
+    </div>
+    <div class="errors container">
+      <% if (errors?.length) { %>
+      <h2>Помилки при заповненні даних</h2>
+
+      <ul>
+        <% for (const error of errors) { %>
+        <li><%= error %></li>
+        <% } %>
+      </ul>
+
+      <hr>
+      <% } %>
+    </div>
+    <main>
+      <form class="car-form" action="<%= car?._id ? `/cars/update/${car._id}` : '/cars/create' %>" method="post" enctype="multipart/form-data">
+        <label>
+          <span>Марка авто</span>
+          <input value="<%= car.brand %>" type="text" name="brand" />
+          <small class="car-form__error"><%= errorsByFiled?.brand %></small>
+        </label>
+
+        <label>
+          <span>Номер авто</span>
+          <input value="<%= car.plate %>" type="text" name="plate" />
+          <small class="car-form__error"><%= errorsByFiled?.plate %></small>
+        </label>
+
+        <label>
+          <span>Рік випуску</span>
+          <input value="<%= car.year %>" type="number" name="year" />
+          <small class="car-form__error"><%= errorsByFiled?.year %></small>
+        </label>
+        <label>
+          <span>Опис авто</span>
+          <input value="<%= car.description %>" type="text" name="description" />
+        </label>
+        <div class="car-form__image-update">
+          <label>
+            <span>Фото авто</span>
+            <input value="<%= car.photo %>" type="file" name="photo" accept="image/*" onchange="handleImageInput(event)" />
+          </label>
+          <div class="car-form__image-wrapper">
+            <img id="carPhoto" src="<%=car.photo?`/${car.photo}` : '/images/no-available-car.jpg' %>" />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn__primary" type="submit">
+            Зберегти
+          </button>
+        </div>
+      </form>
+    </main>
+    <%-include('../components/footer.ejs') %>
+  </div>
+</body>
+
+</html>
