@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+const { Schema } = mongoose
 const userSchema = new mongoose.Schema(
 	{
 		name: {
@@ -32,6 +33,15 @@ const userSchema = new mongoose.Schema(
 					message: 'У паролі має бути принаймні один спец-символ',
 				},
 			],
+		},
+		type: {
+			type: Schema.Types.ObjectId,
+			ref: 'Type',
+		},
+
+		department: {
+			type: Schema.Types.ObjectId,
+			ref: 'Department',
 		},
 	},
 	{ timestamps: true },

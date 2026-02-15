@@ -1,9 +1,6 @@
 import z from 'zod'
 export const UserValidationSchema = z.object({
-	name: z
-		.string()
-		.nonempty({ message: 'Ім"я не може бути порожнім' })
-		.min(2, { message: 'Довжина імені має бути принаймні 2 символи!' }),
+	name: z.string().nonempty({ message: 'Ім"я не може бути порожнім' }).min(2, { message: 'Довжина імені має бути принаймні 2 символи!' }),
 	email: z.string().nonempty({ message: 'Пошта обов"язкова!' }).email({ message: 'Невірний формат!' }),
 	password: z
 		.string()
@@ -15,4 +12,6 @@ export const UserValidationSchema = z.object({
 		.regex(/[^0-9a-zA-Z]/, {
 			message: 'У паролі має бути принаймні один спец-символ',
 		}),
+	type: z.string().nonempty({ message: "Тип є об'язковим" }),
+	department: z.string().nonempty({ message: "Відділ є обов'язковим" }),
 })

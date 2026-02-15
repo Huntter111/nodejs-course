@@ -7,5 +7,5 @@ const router = express.Router()
 router.get('/', UserController.usersList)
 router.get('/register/:id?', UserController.registerForm)
 router.post('/register/:id?', userValidationMiddleware(UserValidationSchema), UserController.registerUser)
-router.delete('/', UserController.deleteUser)
+router.delete('/:id?', UserController.deleteUser)
 export default router

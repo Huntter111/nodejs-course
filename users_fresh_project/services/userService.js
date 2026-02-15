@@ -1,6 +1,7 @@
 import User from '../models/User.js'
+
 export const getAllUsers = async () => {
-	return await User.find()
+	return await User.find().populate('type').populate('department')
 }
 export const getUserById = async (id) => {
 	return await User.findById(id)

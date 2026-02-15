@@ -23,6 +23,19 @@ if(errors?.length){ %>
     <input type="text" name="name" placeholder="Name" value="<%= data ? data.name : '' %>" />
     <input type="email" name="email" placeholder="Email" value="<%= data ? data.email : '' %>" />
     <input type="password" name="password" placeholder="Password" value="<%= data ? data.password : '' %>" />
+
+    <select name="type">
+      <% typesList.forEach(type => { %>
+      <option value="<%= type._id %>" <%= data && data.type && data.type.toString() === type._id.toString() ? 'selected' : '' %>><%=type.title%></option>
+      <% }) %>
+    </select>
+    <select name="department">
+      <% departmentsList.forEach(department => { %>
+      <option value="<%= department?._id %>" <%= data?.department?._id?.toString() === department._id.toString() ? 'selected' : '' %>>
+        <%= department.name %>
+      </option>
+      <% }) %>
+    </select>
     <button type="submit"><%= data?.id ? 'Update' : 'Register' %></button>
   </form>
 </body>
