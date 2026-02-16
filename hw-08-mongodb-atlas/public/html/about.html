@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href="/images/favicon.ico" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/style.css" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/aboutpage.css" />
+		<link
+			rel="stylesheet"
+			href="/stylesheets/footer.css" />
+		<title>About page</title>
+		<script defer>
+			window.addEventListener('DOMContentLoaded', () => {
+				const el = document.getElementById('year')
+				if (el) el.textContent = new Date().getFullYear()
+			})
+		</script>
+	</head>
+	<body>
+		<div class="app">
+			<header>
+				<div class="header-inner">
+					<div class="image__container">
+						<a href="/">
+							<img
+								src="/images/logo.png"
+								alt="Image" />
+						</a>
+					</div>
+					<nav>
+						<ul>
+							<li>
+								<a href="/">Home</a>
+							</li>
+							<li>
+								<a
+									href="/about"
+									class="active"
+									>About</a
+								>
+							</li>
+							<li>
+								<a href="/cars">Cars</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<main class="about">
+				<section class="about-hero">
+					<div class="about-hero__content">
+						<p class="about-hero__kicker">Про проєкт</p>
+						<h1 class="about-hero__title">Cars Fleet App</h1>
+						<p class="about-hero__subtitle">
+							Навчальний CRUD-додаток на Node.js та Express для керування автопарком. Дозволяє додавати, редагувати,
+							видаляти та переглядати транспортні засоби.
+						</p>
+
+						<div class="about-hero__chips">
+							<span class="chip">Node.js</span>
+							<span class="chip">Express</span>
+							<span class="chip">EJS</span>
+							<span class="chip">Multer (upload)</span>
+						</div>
+
+						<div class="about-hero__actions">
+							<a
+								href="/cars"
+								class="btn btn-primary"
+								>Перейти до автопарку</a
+							>
+							<a
+								href="/"
+								class="btn"
+								>На головну</a
+							>
+						</div>
+					</div>
+
+					<div class="about-card">
+						<h2 class="about-card__title">Функціональність</h2>
+
+						<ul class="about-list">
+							<li>
+								<span class="about-list__icon">✅</span>
+								<div>
+									<strong>Додавання авто</strong>
+									<p>Марка, рік, номер, фото та опис.</p>
+								</div>
+							</li>
+							<li>
+								<span class="about-list__icon">✏️</span>
+								<div>
+									<strong>Редагування</strong>
+									<p>Оновлення даних і зображення з прев’ю.</p>
+								</div>
+							</li>
+							<li>
+								<span class="about-list__icon">🗑️</span>
+								<div>
+									<strong>Видалення</strong>
+									<p>Швидке видалення запису зі списку.</p>
+								</div>
+							</li>
+							<li>
+								<span class="about-list__icon">📄</span>
+								<div>
+									<strong>Список та деталі</strong>
+									<p>Перегляд автопарку та сторінка деталей авто.</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="about-section">
+					<h2 class="about-section__title">Структура даних</h2>
+
+					<div class="about-grid">
+						<div class="about-box">
+							<span class="about-box__label">Поля авто</span>
+							<code class="code"> id, brand, year, plate, photo, description </code>
+						</div>
+
+						<div class="about-box">
+							<span class="about-box__label">Сторінки</span>
+							<code class="code">Home · About · Cars (list) · Car detail · Create/Update</code>
+						</div>
+
+						<div class="about-box">
+							<span class="about-box__label">Ціль</span>
+							<p class="about-box__text">
+								Закріпити роботу з маршрутами, контролерами, шаблонами та завантаженням файлів.
+							</p>
+						</div>
+					</div>
+				</section>
+			</main>
+
+			<footer class="site-footer">
+				<div class="footer-inner container">
+					<p class="footer-brand">Cars Fleet App</p>
+
+					<p class="footer-copy">© <span id="year"></span> Node.js Course · Усі права захищені</p>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
